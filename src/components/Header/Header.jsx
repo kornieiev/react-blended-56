@@ -1,7 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
+import { selectCurrency } from '../../redux/selectors';
 
 export default function Header() {
+  const currency = useSelector(selectCurrency);
   return (
     <>
       <header>
@@ -15,6 +18,7 @@ export default function Header() {
             </li>
           </ul>
         </nav>
+        {currency && <p> Your current currency:{currency}</p>}
       </header>
       <Outlet />
     </>
